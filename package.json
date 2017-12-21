@@ -1,0 +1,21 @@
+{
+  "name": "meteor-docker",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "dockerode": "^2.2.10",
+    "material-ui": "^0.15.0",
+    "meteor-node-stubs": "~0.2.0",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.0",
+    "react-router": "^2.0.1",
+    "react-tap-event-plugin": "^1.0.0",
+    "shelljs": "^0.7.0",
+    "tar-stream": "^1.5.2",
+    "xml2js": "^0.4.16",
+    "react-addons-pure-render-mixin": "^15.0.2",
+    "async": "^2.0.0-rc.4"
+  }
+}

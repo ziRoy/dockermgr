@@ -1,0 +1,73 @@
+{
+  "name": "hp",
+  "targets": [
+    {
+      "name": "gameserver",
+      "build": {
+        "image": "docker-repo.gamed9.com/hp/build",
+        "env": [
+          {
+            "name": "BRANCH",
+            "type": "selection",
+            "options": {
+              "type": "plugin",
+              "value": "svn-branch-list-plugin",
+              "param": {
+                "svn": {
+                  "type": "const",
+                  "value": "http://172.16.0.3/repository/water_server"
+                }
+              }
+            }
+          },
+          {
+            "name": "SERVER_VER",
+            "watch": [
+              "BRANCH"
+            ],
+            "type": "text",
+            "default": {
+              "type": "plugin",
+              "value": "svn-version-plugin",
+              "param": {
+                "svn": {
+                  "type": "const",
+                  "value": "http://172.16.0.3/repository/water_server"
+                },
+                "branch": {
+                  "type": "ref",
+                  "value": "BRANCH"
+                }
+              }
+            }
+          },
+          {
+            "name": "RES_VER",
+            "watch": [
+              "BRANCH"
+            ],
+            "type": "text",
+            "default": {
+              "type": "plugin",
+              "value": "svn-version-plugin",
+              "param": {
+                "svn": {
+                  "type": "const",
+                  "value": "http://172.16.0.3/repository/water_art"
+                },
+                "branch": {
+                  "type": "ref",
+                  "value": "BRANCH"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "package":{
+        "archivePath":"/workspace",
+        "image":"docker-repo.gamed9.com/hp/game:${BRANCH}.${SERVER_VER}.${RES_VER}"
+      }
+    }
+  ]
+}
